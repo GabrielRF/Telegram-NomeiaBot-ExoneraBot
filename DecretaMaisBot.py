@@ -18,7 +18,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Me envie um nome para ser nomeado!")
+    bot.reply_to(message, "<b>Bem vindo ao NomeiaBot!</b>\n\nEnvie no formato:\n<i>nome, cargo</i>",parse_mode='HTML')
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
@@ -34,8 +34,8 @@ def Create_Image(message):
     nome = nome.lower().title()
     cargo = cargo.title()
 
-    text = ('{}, para exercer interinamente, o cargo de {} da Casa Civil da'
-            'Presidência da República, sem prejuízo das atribuições do que'
+    text = ('{}, para exercer interinamente, o cargo de {} da Casa Civil da '
+            'Presidência da República, sem prejuízo das atribuições do que '
             'atualmente ocupa.')
     text = text.format(nome, cargo)
     text_wrap = textwrap.fill(text, 69)
@@ -48,6 +48,7 @@ def Create_Image(message):
     img.save(str(message.from_user.id) + '.jpg')
     photo = open(str(message.from_user.id) + '.jpg', 'rb')
     bot.send_photo(message.from_user.id, photo)
+    bot.send_message(message.from_user.id, 'Conheça mais bots do Telegram no @BemVindo!')
 
 bot.polling(none_stop=True)
 while True:
