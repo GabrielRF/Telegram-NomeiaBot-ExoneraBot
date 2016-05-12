@@ -48,7 +48,7 @@ def Create_Image(message):
     img.save(str(message.from_user.id) + '.jpg')
     photo = open(str(message.from_user.id) + '.jpg', 'rb')
     bot.send_photo(message.from_user.id, photo)
-    bot.send_message(message.from_user.id, 'Conheça mais bots do Telegram no @BemVindo!')
+    bot.send_message(message.from_user.id, 'Quer nomear alguém? @NomeiaBot\n\nConheça mais bots do Telegram no @BemVindo!')
 
 bot.polling(none_stop=True)
 while True:
