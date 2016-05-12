@@ -13,15 +13,20 @@ TOKEN = config['NOMEIA']['TOKEN']
 
 bot = telebot.TeleBot(TOKEN)
 
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+    bot.reply_to(message, "Me envie um nome para ser nomeado!")
+
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
     Create_Image(message)
 
-def Create_Image(message): 
+def Create_Image(message):
+    texto = message.text.upper() 
     fonte = ImageFont.truetype('nimbus.ttf', 14)
     img = Image.open('DOU_alterado.png')
     draw = ImageDraw.Draw(img)
-    draw.text((125,307), message.text, (0,0,0), font = fonte)
+    draw.text((125,307), texto, (0,0,0), font = fonte)
     draw = ImageDraw.Draw(img)
     img.save(str(message.from_user.id) + '.jpg')
     photo = open(str(message.from_user.id) + '.jpg', 'rb')
