@@ -25,10 +25,19 @@ def echo_all(message):
     Create_Image(message)
 
 def Create_Image(message):
-    text = ('{}, para exercer interinamente, o cargo de Secretário-Executivo '
-            'da Casa Civil da Presidência da República, sem prejuízo das '
-            'atribuições do que atualmente ocupa.')
-    text = text.format(message.text.lower().title())
+    try:
+        nome, cargo = message.text.split(',')
+    except ValueError:
+        nome = message.text
+        cargo = 'Secretário-Executivo'
+
+    nome = nome.lower().title()
+    cargo = cargo.title()
+
+    text = ('{}, para exercer interinamente, o cargo de {} da Casa Civil da'
+            'Presidência da República, sem prejuízo das atribuições do que'
+            'atualmente ocupa.')
+    text = text.format(nome, cargo)
     text_wrap = textwrap.fill(text, 69)
 
     fonte = ImageFont.truetype('nimbus.ttf', 14)
