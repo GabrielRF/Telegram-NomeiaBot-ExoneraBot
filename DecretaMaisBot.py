@@ -1,9 +1,12 @@
 import sys
+import configparser
+import textwrap
+
 import telebot
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-import configparser
+
 
 config = configparser.ConfigParser()
 config.sections()
@@ -22,11 +25,16 @@ def echo_all(message):
     Create_Image(message)
 
 def Create_Image(message):
-    texto = message.text.upper() 
+    text = ('{}, para exercer interinamente, o cargo de Secretário-Executivo '
+            'da Casa Civil da Presidência da República, sem prejuízo das '
+            'atribuições do que atualmente ocupa.')
+    text = text.format(message.text.lower().title())
+    text_wrap = textwrap.fill(text, 69)
+
     fonte = ImageFont.truetype('nimbus.ttf', 14)
     img = Image.open('DOU_alterado.png')
     draw = ImageDraw.Draw(img)
-    draw.text((125,307), texto, (0,0,0), font = fonte)
+    draw.text((125,307), text_wrap, (0,0,0), font = fonte)
     draw = ImageDraw.Draw(img)
     img.save(str(message.from_user.id) + '.jpg')
     photo = open(str(message.from_user.id) + '.jpg', 'rb')
