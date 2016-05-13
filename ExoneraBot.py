@@ -34,16 +34,14 @@ def Create_Image(message):
     nome = nome.lower().title()
     cargo = cargo.title()
 
-    text = ('{} do cargo de {}, '
-            'sem prejuízo das atribuições do que '
-            'atualmente ocupa.')
+    text = ('{} do cargo de {}.')
     text = text.format(nome, cargo)
-    text_wrap = textwrap.fill(text, 69)
+    text_wrap = textwrap.fill(text, 68)
 
     fonte = ImageFont.truetype('nimbus.ttf', 14)
-    img = Image.open('DOU_alterado2.png')
+    img = Image.open('temer_exonerar.png')
     draw = ImageDraw.Draw(img)
-    draw.text((125,307), text_wrap, (0,0,0), font = fonte)
+    draw.text((480,302), text_wrap, (0,0,0), font = fonte)
     draw = ImageDraw.Draw(img)
     img.save(str(message.from_user.id) + '.jpg')
     photo = open(str(message.from_user.id) + '.jpg', 'rb')
