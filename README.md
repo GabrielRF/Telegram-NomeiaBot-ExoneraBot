@@ -8,10 +8,6 @@ O usuário envia o texto e o bot completa as informações na imagem base.
 
 ![NomeiaBot](NomeiaBot.jpg)
 
-[Clique para testar o NomeiaBot](http://telegram.me/NomeiaBot).
-
-[Clique para testar o ExoneraBot](http://telegram.me/ExoneraBot).
-
 ## Uso
 
 Adicione os tokens no arquivo `bot.conf` seguindo o modelo:
