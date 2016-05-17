@@ -1,5 +1,7 @@
 # Bots do Telegram
 
+## Desativados em 17 maio de 2016. 
+
 ###### Bots criados com o fim de entreter. Não devem ser levados a sério.
 
 O usuário envia o texto e o bot completa as informações na imagem base.
